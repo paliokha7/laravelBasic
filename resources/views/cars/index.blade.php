@@ -1,9 +1,13 @@
-@extends('layouts.app')
+@extends('cars.layouts.app')
 
 @section('title', 'List of Cars')
 
 @section('content')
     <h1>List of Cars</h1>
+
+    @if (session('success'))
+        <div>{{ session('success') }}</div>
+    @endif
     
     <ul>
         @foreach($cars as $car)

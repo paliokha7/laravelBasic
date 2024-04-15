@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create New Car</title>
-</head>
-<body>
+@extends('cars.layouts.app')
+
+@section('title', 'Create New Car')
+
+@section('content')
     <h1>Create New Car</h1>
     <form action="{{ route('cars.store') }}" method="POST">
         @csrf
@@ -23,5 +20,4 @@
     </form>
     <br>
     <a href="{{ route('cars.index') }}">Back to List</a>
-</body>
-</html>
+@endsection
