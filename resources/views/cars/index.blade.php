@@ -10,11 +10,13 @@
     @endif
     
     <ul>
-        @foreach($cars as $car)
-        <li>
-            {{ $car->brand }} - {{ $car->model }} ({{ $car->year }})
-        </li>
-        @endforeach
+    @foreach($cars as $id => $car)
+    <li>
+        <a href="{{ route('cars.show', ['id' => $id]) }}">
+            {{ $car['brand'] }} - {{ $car['model'] }} ({{ $car['year'] }})
+        </a>
+    </li>
+@endforeach
     </ul>
 
     <a href="{{ route('cars.create') }}">Add New Car</a>

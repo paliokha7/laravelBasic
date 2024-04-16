@@ -14,18 +14,24 @@ class Car extends Model
         ['brand' => 'Ford', 'model' => 'Mustang', 'year' => 2018],
         ['brand' => 'Chevrolet', 'model' => 'Camaro', 'year' => 2021]
     ];
+    
 
     public static function all($columns = ['*'])
     {
-        return collect(self::$cars)->map(function ($car) {
+        return collect(self::$cars)->map(function ($car, $id) {
+            $car['id'] = $id; 
             return new static($car);
         });
     }
-
     public static function create(array $attributes = [])
     {
         $car = new static($attributes);
         self::$cars[] = $car->toArray();
         return $car;
+    }
+
+    public static function find($id)
+    {
+        return isset(self::$cars[$id]) ? new static(self::$cars[$id]) : null;
     }
 }

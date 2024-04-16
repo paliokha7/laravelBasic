@@ -48,8 +48,18 @@ class CarController extends Controller
     
         return view('cars.index', ['cars' => $filteredCars]);
     }
-    
-    
 
+    public function show($id)
+    {
+        $car = Car::find($id);
 
+        if (!$car) {
+            abort(404);
+        }
+
+        return view('cars.show', compact('car'));
+    }
+
+    
+   
 }
